@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construtora Orion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0B3C5D;      /* Azul marinho corporativo */
+            --secondary: #C8A45D;     /* Dourado elegante */
+            --accent: #1D2731;        /* Azul escuro */
+            --light: #F4F4F4;         /* Cinza claro */
+            --text: #333333;          /* Texto principal */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 10px; /* Adicionando uma pequena margem */
+            padding: 0;
+        }
+
+        nav {
+            background-color: var(--primary);
+            padding: 1.2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--light);
+            font-weight: 300;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.5rem; /* Espaçamento entre os itens */
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem; /* Aumentando o padding para melhor espaçamento */
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .projeto-card, .empreendimento-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .projeto-card:hover, .empreendimento-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contato-form button {
+            background-color: var(--secondary);
+            color: var(--accent);
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contato-form button:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .redes-sociais a {
+            color: var(--primary);
+            margin-right: 1.5rem;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .redes-sociais a:hover {
+            color: var(--secondary);
+        }
+
+        .footer {
+            background-color: var(--accent);
+            color: var(--light);
+            padding: 2rem;
+        }
+
+        /* Novos estilos para elementos destacados */
+        .destaque {
+            border-left: 4px solid var(--secondary);
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+
+        .numeros-destaque {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .numero-item {
+            padding: 2rem;
+            background-color: var(--light);
+            border-radius: 8px;
+        }
+
+        .numero-item h3 {
+            color: var(--secondary);
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 500px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .projeto-grid, .empreendimento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .projeto-card img, .empreendimento-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .projeto-card h3, .empreendimento-card h3 {
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .projeto-card p, .empreendimento-card p {
+            padding: 0 1rem 1rem;
+            margin: 0;
+        }
+
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .sobre-content img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contato-form input, .contato-form textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .redes-sociais {
+            margin-top: 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">ORION<span>CONSTRUTORA</span></a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#empreendimentos">Empreendimentos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg" alt="Edifício Moderno">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg" alt="Condomínio Residencial">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/534220/pexels-photo-534220.jpeg" alt="Apartamento Luxuoso">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg" alt="Projeto Comercial">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg" alt="Empreendimento Corporativo">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-control" onclick="prevSlide()">❮</button>
+            <button class="carousel-control" onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="home" data-aos="fade-up">
+            <h1>Construtora Orion</h1>
+            <p>Há mais de 20 anos construindo sonhos e transformando o horizonte das cidades. Qualidade, inovação e compromisso são os pilares que sustentam nossa história.</p>
+            <div class="numeros-destaque">
+                <div class="numero-item">
+                    <h3>20+</h3>
+                    <p>Anos de Experiência</p>
+                </div>
+                <div class="numero-item">
+                    <h3>500+</h3>
+                    <p>Colaboradores</p>
+                </div>
+                <div class="numero-item">
+                    <h3>50+</h3>
+                    <p>Projetos Entregues</p>
+                </div>
+                <div class="numero-item">
+                    <h3>5</h3>
+                    <p>Estados Atendidos</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" data-aos="fade-up">
+            <h2>Projetos em Andamento</h2>
+            <div class="projeto-grid">
+                <div class="projeto-card">
+                    <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg" alt="Residencial Villa Nova">
+                    <h3>Residencial Villa Nova</h3>
+                    <p>Apartamentos de luxo com 3 e 4 dormitórios</p>
+                    <p>Previsão de entrega: 2024</p>
+                </div>
+                <div class="projeto-card">
+                    <img src="https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg" alt="Orion Business Center">
+                    <h3>Orion Business Center</h3>
+                    <p>Salas comerciais de alto padrão</p>
+                    <p>Previsão de entrega: 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="empreendimentos" data-aos="fade-up">
+            <h2>Empreendimentos Entregues</h2>
+            <div class="empreendimento-grid">
+                <div class="empreendimento-card">
+                    <img src="https://images.pexels.com/photos/273209/pexels-photo-273209.jpeg" alt="Terraço Jardim">
+                    <h3>Terraço Jardim</h3>
+                    <p>Condomínio residencial com área verde</p>
+                    <p>Entregue em 2022</p>
+                </div>
+                <div class="empreendimento-card">
+                    <img src="https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg" alt="Sky Tower">
+                    <h3>Sky Tower</h3>
+                    <p>Torre comercial no centro da cidade</p>
+                    <p>Entregue em 2021</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" data-aos="fade-up">
+            <h2>Sobre a Orion</h2>
+            <div class="sobre-content">
+                <img src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg" alt="Equipe Orion">
+                <div class="sobre-texto">
+                    <div class="destaque">
+                        <p>Fundada em 2000, a Construtora Orion se destaca no mercado imobiliário por sua excelência em construção civil e compromisso com a qualidade.</p>
+                    </div>
+                    <ul>
+                        <li>Mais de 50 empreendimentos entregues</li>
+                        <li>Certificação ISO 9001</li>
+                        <li>Equipe com mais de 500 colaboradores</li>
+                        <li>Presente em 5 estados brasileiros</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" data-aos="fade-up">
+            <h2>Entre em Contato</h2>
+            <div class="contato-grid">
+                <div class="contato-info">
+                    <h3>Informações de Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 4444-5555</p>
+                    <p><i class="fas fa-envelope"></i> contato@orion.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
+                    <div class="redes-sociais">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form class="contato-form">
+                    <input type="text" placeholder="Nome">
+                    <input type="email" placeholder="E-mail">
+                    <input type="tel" placeholder="Telefone">
+                    <textarea placeholder="Mensagem"></textarea>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <p>&copy; 2023 Construtora Orion. Todos os direitos reservados.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+        let currentSlide = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        
+        function showSlide(n) {
+            const carousel = document.querySelector('.carousel-inner');
+            currentSlide = (n + items.length) % items.length;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Auto-advance slides
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
